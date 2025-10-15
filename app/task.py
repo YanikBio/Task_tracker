@@ -3,8 +3,8 @@ from time import *
 
 
 class Task:
-    def __init__(self, description):
-        self.id = self._creatID()
+    def __init__(self, task_id, description):
+        self.task_id = task_id
         self.description = description
         self.status = 'to-do'
 
@@ -14,18 +14,21 @@ class Task:
         self.updatedAt = self.createdAt
 
 
-    def _successfully_task_create(self):
-        pass
+    
+    def save_task(self):
+        '''Функция для преобразования объекта в json формат, который будет хранится в all_tasks.json'''
+        return 
+    
 
+    def show(self):
+        print(f"\nTAKS_ID: {self.task_id}\nDESCRIPTION: {self.description}\nSTATUS: {self.status}\nCREATEDAT: {self.createdAt}\n")
 
-    def _creatID(self):
-        return 1
   
 
 
-test_task = Task(
-    name = 'test',
-    description = 'something'
-)
+# test_task = Task(
+#     name = 'test',
+#     description = 'something'
+# )
 
-print(test_task.createdAt)
+# print(test_task.createdAt)
