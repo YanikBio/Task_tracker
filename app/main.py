@@ -16,7 +16,7 @@ def main():
 
         case 'update':
             print(f"Update function {sys.argv[2]}")
-            task_manager.update(sys.argv[2])
+            task_manager.update(int(sys.argv[2]), sys.argv[3])
 
         case 'delite':
             print('Delite function')

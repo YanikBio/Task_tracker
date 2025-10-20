@@ -44,27 +44,37 @@ class TaskManager:
                 memory_file.write('[]')
                 self.all_memory = []
 
+    
+    def remember(self):
+        '''Функция для запоминания новой памяти'''
+        with open(self.memory_file, 'w') as memory_file:
+            json.dump(self.all_memory, memory_file, indent=4)
+
+
 
     def add(self, task_name):
-        '''Функция для добавления новой Task'''
+        '''Функция для создания новой Task'''
         task_id = self.last_id + 1
         new_task = Task(task_id, task_name)
         new_task.show()
 
-        with open(self.memory_file, 'w') as memory_file:
-            json_new_task = new_task.to_json()
-            self.all_memory = self.all_memory + json_new_task
+        json_new_task = new_task.to_json()
+        self.all_memory = self.all_memory + json_new_task
 
-            json.dump(self.all_memory, memory_file, indent=4)
+        self.remember()
 
 
-    def update(self, task_id):
+    def update(self, task_id, new_description):
         print("YOU ARE HERE")
+        for task in self.all_memory:
+            if task['task_id'] == task_id:
+                pass
+                
 
 
-    def delite(self):
+    def delite(self, task_id):
         ...
 
 
-    def show(self):
+    def show(self, task_id):
         ...

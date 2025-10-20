@@ -3,14 +3,18 @@ from time import *
 
 
 class Task:
-    def __init__(self, task_id, description):
+    def __init__(self, task_id, description, createdAt=''):
         self.task_id = task_id
         self.description = description
         self.status = 'to-do'
 
         year, month, day = localtime()[0], localtime()[1], localtime()[2]
         hour, minutes = localtime()[3], localtime()[4]
-        self.createdAt = f"{year}.{month}.{day}, {hour}:{minutes}"
+        # проверка для update уже имеющихся задач
+        if not createdAt:
+            self.createdAt = f"{year}.{month}.{day}, {hour}:{minutes}"
+        else: 
+            self.createdAt = createdAt
         self.updatedAt = self.createdAt
 
 
