@@ -6,16 +6,18 @@ def main():
         print("Usage ./task-cli <command> [arguments]")
         return
     
-    task_managar = TaskManager()
+    task_manager = TaskManager()
 
     command = sys.argv[1]
     match command:
         case 'add':
             print(f'Add function {sys.argv[2]}')
-            task_managar.add(sys.argv[2])
+            task_manager.add(sys.argv[2])
 
         case 'update':
-            print('Udpate function')
+            print(f"Update function {sys.argv[2]}")
+            task_manager.update(sys.argv[2])
+
         case 'delite':
             print('Delite function')
         case 'list':

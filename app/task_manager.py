@@ -10,9 +10,11 @@ class TaskManager:
         self.task_count = 0  # общее кол-во задач
         self.todo_tasks = 0  # количество неначатых задач
         self.in_progress_tasks = 0  # кол-во начатых задач
-        self.done_tasts = 0  # кол-во сделанных задач
+        self.done_tasks = 0  # кол-во сделанных задач
 
-        self.all_tasks = 0 # все задачи с объетками класса Task
+        self.last_id = 0
+
+        self.all_tasks = [] # все задачи с объетками класса Task
 
         try:
             with open(self.memory_file, 'r') as memory_file:
@@ -27,6 +29,11 @@ class TaskManager:
                 '''
                 try:
                     self.all_memory = json.load(memory_file)
+                    '''Возможно, есть смысл реализовать через цикл... и забирать все значения по порядку, "загружая"
+                    их в память, а не забирать последние значения'''
+                    self.task_count = len(self.all_memory)  # забираем значение и берём все значения 
+                    self.last_id = self.all_memory[-1]['task_id'] # забираю последнее значение id
+
                 except json.decoder.JSONDecodeError:
                     self.all_memory = []
                     print("Memory file is empty")
@@ -34,21 +41,25 @@ class TaskManager:
         except FileNotFoundError:
             with open(self.memory_file, 'w') as memory_file:
                 print("Memory file is created")
+                memory_file.write('[]')
                 self.all_memory = []
 
 
     def add(self, task_name):
         '''Функция для добавления новой Task'''
-        task_id = self.task_count + 1
+        task_id = self.last_id + 1
         new_task = Task(task_id, task_name)
         new_task.show()
 
         with open(self.memory_file, 'w') as memory_file:
-            pass
+            json_new_task = new_task.to_json()
+            self.all_memory = self.all_memory + json_new_task
+
+            json.dump(self.all_memory, memory_file, indent=4)
 
 
-    def update(self):
-        ...
+    def update(self, task_id):
+        print("YOU ARE HERE")
 
 
     def delite(self):

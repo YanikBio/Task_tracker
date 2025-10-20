@@ -15,9 +15,16 @@ class Task:
 
 
     
-    def save_task(self):
+    def to_json(self):
         '''Функция для преобразования объекта в json формат, который будет хранится в all_tasks.json'''
-        return 
+        json_task = [{
+            "task_id": self.task_id,
+            "description": self.description,
+            "status": self.status,
+            "created": self.createdAt,
+            "update": self.updatedAt
+        }]
+        return json_task
     
 
     def show(self):
