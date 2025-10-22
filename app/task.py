@@ -3,10 +3,14 @@ from time import *
 
 
 class Task:
-    def __init__(self, task_id, description, createdAt=''):
+    def __init__(self, task_id, description, status='', createdAt='', updatedAt=''):
         self.task_id = task_id
         self.description = description
-        self.status = 'to-do'
+
+        if not status:     
+            self.status = 'to-do'
+        else:
+            self.status = status
 
         year, month, day = localtime()[0], localtime()[1], localtime()[2]
         hour, minutes = localtime()[3], localtime()[4]
@@ -15,7 +19,11 @@ class Task:
             self.createdAt = f"{year}.{month}.{day}, {hour}:{minutes}"
         else: 
             self.createdAt = createdAt
-        self.updatedAt = self.createdAt
+        
+        if not updatedAt:
+            self.updatedAt = self.createdAt
+        else:
+            self.updatedAt = updatedAt
 
 
     
@@ -26,9 +34,19 @@ class Task:
             "description": self.description,
             "status": self.status,
             "created": self.createdAt,
-            "update": self.updatedAt
+            "updated": self.updatedAt
         }]
         return json_task
+    
+    
+    def update_description(self, new_description):
+        self.description = new_description
+    
+
+    def update_time(self):
+        year, month, day = localtime()[0], localtime()[1], localtime()[2]
+        hour, minutes = localtime()[3], localtime()[4]
+        self.updatedAt = f"{year}.{month}.{day}, {hour}:{minutes}"
     
 
     def show(self):

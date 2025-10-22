@@ -1,65 +1,30 @@
 [
     {
         "task_id": 1,
-        "description": "New task",
+        "description": "First",
         "status": "to-do",
-        "created": "2025.10.21, 0:6",
-        "update": "2025.10.21, 0:6"
+        "created": "2025.10.22, 22:42",
+        "updated": "2025.10.22, 22:42"
+    },
+    {
+        "task_id": 2,
+        "description": "Second update",
+        "status": "to-do",
+        "created": "2025.10.22, 22:42",
+        "updated": "2025.10.22, 22:48"
     },
     {
         "task_id": 3,
-        "description": "Task 2",
+        "description": "Third update",
         "status": "to-do",
-        "created": "2025.10.21, 0:24",
-        "update": "2025.10.21, 0:24"
+        "created": "2025.10.22, 22:43",
+        "updated": "2025.10.22, 22:49"
     },
     {
         "task_id": 4,
-        "description": "Task 1",
+        "description": "Fourth",
         "status": "to-do",
-        "created": "2025.10.21, 0:24",
-        "update": "2025.10.21, 0:24"
-    },
-    {
-        "task_id": 5,
-        "description": "Task 3",
-        "status": "to-do",
-        "created": "2025.10.21, 0:24",
-        "update": "2025.10.21, 0:24"
-    },
-    {
-        "task_id": 6,
-        "description": "Something",
-        "status": "to-do",
-        "created": "2025.10.21, 0:27",
-        "update": "2025.10.21, 0:27"
-    },
-    {
-        "task_id": 7,
-        "description": "Something",
-        "status": "to-do",
-        "created": "2025.10.21, 0:35",
-        "update": "2025.10.21, 0:35"
-    },
-    {
-        "task_id": 8,
-        "description": "And new",
-        "status": "to-do",
-        "created": "2025.10.21, 1:42",
-        "update": "2025.10.21, 1:42"
-    },
-    {
-        "task_id": 9,
-        "description": "Again",
-        "status": "to-do",
-        "created": "2025.10.21, 1:45",
-        "update": "2025.10.21, 1:45"
-    },
-    {
-        "task_id": 10,
-        "description": "Puff",
-        "status": "to-do",
-        "created": "2025.10.21, 1:46",
-        "update": "2025.10.21, 1:46"
+        "created": "2025.10.22, 22:43",
+        "updated": "2025.10.22, 22:43"
     }
 ]

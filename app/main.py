@@ -15,6 +15,10 @@ def main():
             task_manager.add(sys.argv[2])
 
         case 'update':
+            if len(sys.argv) < 4:
+                print("Usage ./task-cli <command> <taskID> [arguments]")
+                return
+
             print(f"Update function {sys.argv[2]}")
             task_manager.update(int(sys.argv[2]), sys.argv[3])
 

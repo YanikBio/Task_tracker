@@ -27,12 +27,23 @@ class TaskManager:
                 - кол-во законченых задач
                 - список всех задач (в json формате, который будет поступать в функцию show() и показывать всё это пользователю)
                 '''
+                
                 try:
                     self.all_memory = json.load(memory_file)
-                    '''Возможно, есть смысл реализовать через цикл... и забирать все значения по порядку, "загружая"
-                    их в память, а не забирать последние значения'''
-                    self.task_count = len(self.all_memory)  # забираем значение и берём все значения 
-                    self.last_id = self.all_memory[-1]['task_id'] # забираю последнее значение id
+                    '''Всё буду хранить в виде объектов'''
+                    for task in self.all_memory:
+                        self.all_tasks.append(
+                            Task(
+                                task_id=task['task_id'],
+                                description=task['description'],
+                                status=task['status'],
+                                createdAt=task['created'],
+                                updatedAt=task['updated']
+                            )
+                        )
+                        
+                    self.task_count = len(self.all_tasks)  # забираем значение и берём все значения 
+                    self.last_id = self.all_tasks[-1].task_id # забираю последнее значение id
 
                 except json.decoder.JSONDecodeError:
                     self.all_memory = []
@@ -45,6 +56,13 @@ class TaskManager:
                 self.all_memory = []
 
     
+    def create_memory(self):
+        '''Создаём новую память записывая снова всё в json'''
+        self.all_memory = []
+        for task in self.all_tasks:
+            self.all_memory = self.all_memory + task.to_json()
+
+
     def remember(self):
         '''Функция для запоминания новой памяти'''
         with open(self.memory_file, 'w') as memory_file:
@@ -65,10 +83,18 @@ class TaskManager:
 
 
     def update(self, task_id, new_description):
-        print("YOU ARE HERE")
-        for task in self.all_memory:
-            if task['task_id'] == task_id:
-                pass
+        for task in self.all_tasks:
+            if task.task_id == task_id:
+                task.update_description(new_description)
+                task.update_time()
+
+                self.create_memory()
+                self.remember()
+                return
+         
+        else:
+            print("No task with this ID")
+                
                 
 
 
