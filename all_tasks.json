@@ -2,29 +2,36 @@
     {
         "task_id": 1,
         "description": "First",
-        "status": "to-do",
+        "status": "in-progress",
         "created": "2025.10.22, 22:42",
         "updated": "2025.10.22, 22:42"
     },
     {
-        "task_id": 2,
-        "description": "Second update",
-        "status": "to-do",
-        "created": "2025.10.22, 22:42",
-        "updated": "2025.10.22, 22:48"
-    },
-    {
         "task_id": 3,
         "description": "Third update",
-        "status": "to-do",
+        "status": "todo",
         "created": "2025.10.22, 22:43",
         "updated": "2025.10.22, 22:49"
     },
     {
         "task_id": 4,
         "description": "Fourth",
-        "status": "to-do",
+        "status": "todo",
         "created": "2025.10.22, 22:43",
         "updated": "2025.10.22, 22:43"
+    },
+    {
+        "task_id": 5,
+        "description": "Something new",
+        "status": "todo",
+        "created": "2025.10.23, 21:50",
+        "updated": "2025.10.23, 21:50"
+    },
+    {
+        "task_id": 6,
+        "description": "And again",
+        "status": "todo",
+        "created": "2025.10.23, 21:51",
+        "updated": "2025.10.23, 21:51"
     }
 ]

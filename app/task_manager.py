@@ -69,7 +69,6 @@ class TaskManager:
             json.dump(self.all_memory, memory_file, indent=4)
 
 
-
     def add(self, task_name):
         '''Функция для создания новой Task'''
         task_id = self.last_id + 1
@@ -93,14 +92,47 @@ class TaskManager:
                 return
          
         else:
-            print("No task with this ID")
-                
-                
+            print("NO TASK with such ID")
 
+
+    def change_status(self, new_status, task_id):
+        new_status = new_status.replace("mark-", "")
+        for task in self.all_tasks:
+            if task.task_id == task_id:
+                task.update_status(new_status)
+                task.show()
+                
+                self.create_memory()
+                self.remember()
+                return
+        else:
+            print("No task with such ID")
+            
+                
 
     def delite(self, task_id):
-        ...
+        for task in self.all_tasks:
+            if task.task_id == task_id:
+                self.all_tasks.remove(task)
+                
+                self.create_memory()
+                self.remember()
+                return
+        else:
+            print("NO TASK with such ID")
+        
+    
+
+    def show_list(self, task_status=''):
+        if task_status:
+            for task in self.all_tasks:
+                if task.status == task_status:
+                    task.show()
+        else:
+            for task in self.all_tasks:
+                task.show()
+        
 
 
-    def show(self, task_id):
-        ...
+
+        

@@ -4,13 +4,13 @@ from time import *
 
 class Task:
     def __init__(self, task_id, description, status='', createdAt='', updatedAt=''):
-        self.task_id = task_id
-        self.description = description
+        self._task_id = task_id
+        self._description = description
 
         if not status:     
-            self.status = 'to-do'
+            self._status = 'todo'
         else:
-            self.status = status
+            self._status = status
 
         year, month, day = localtime()[0], localtime()[1], localtime()[2]
         hour, minutes = localtime()[3], localtime()[4]
@@ -38,9 +38,28 @@ class Task:
         }]
         return json_task
     
+
+    @property
+    def status(self):
+        return self._status
+    
+
+    @property
+    def task_id(self):
+        return self._task_id
+    
+
+    @property
+    def description(self):
+        return self._description
+    
     
     def update_description(self, new_description):
-        self.description = new_description
+        self._description = new_description
+
+
+    def update_status(self, new_status):
+        self._status = new_status
     
 
     def update_time(self):
@@ -50,14 +69,4 @@ class Task:
     
 
     def show(self):
-        print(f"\nTAKS_ID: {self.task_id}\nDESCRIPTION: {self.description}\nSTATUS: {self.status}\nCREATEDAT: {self.createdAt}\n")
-
-  
-
-
-# test_task = Task(
-#     name = 'test',
-#     description = 'something'
-# )
-
-# print(test_task.createdAt)
+        print(f"\nTAKS_ID: {self.task_id}\nDESCRIPTION: {self.description}\nSTATUS: {self.status}\nCREATEDAT: {self.createdAt}\nUPDATEDAT: {self.updatedAt}\n")
